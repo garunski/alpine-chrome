@@ -25,15 +25,7 @@ RUN echo "http://dl-2.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories 
     /usr/lib/node_modules/npm/html \
     /usr/lib/node_modules/npm/scripts
 
-# Add Chrome as a user
-RUN adduser -D chrome \
-    && chown -R chrome:chrome /usr/src/app
-# Run Chrome as non-privileged
-USER chrome
 
 ENV CHROME_BIN=/usr/bin/chromium-browser \
     CHROME_PATH=/usr/lib/chromium/
-
-# Autorun chrome headless with no GPU
-ENTRYPOINT ["chromium-browser", "--headless", "--disable-gpu", "--disable-software-rasterizer"]
 
